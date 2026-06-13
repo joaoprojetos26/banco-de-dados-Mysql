@@ -2,3 +2,14 @@ atividade 1
 SELECT  CONCAT(ProductName AS '-R$' Price *2) AS resultado
 from Products
 LIMIT 10;
+
+atividade 2
+SELECT CONCAT( 'O produto/' , ProductName , '/custa/' , Price , '/euros/') AS 'Descricao'
+FROM Products
+ORDER BY Price ASC
+LIMIT 5;
+
+atividade 3
+SELECT CONCAT( 'Encomenda', OrderDetailID, '/','tem total de', Quantity *10) AS 'Descricao'
+from OrderDetails
+limit 15;
