@@ -1,0 +1,4 @@
+atividade 1
+SELECT  CONCAT(ProductName AS '-R$' Price *2) AS resultado
+from Products
+LIMIT 10;
