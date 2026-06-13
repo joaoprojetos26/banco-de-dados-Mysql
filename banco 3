@@ -10,6 +10,42 @@ ORDER BY Price ASC
 LIMIT 5;
 
 atividade 3
-SELECT CONCAT( 'Encomenda', OrderDetailID, '/','tem total de', Quantity *10) AS 'Descricao'
+SELECT CONCAT( 'Encomenda', OrderDetailID, ' ','tem total de', Quantity *10) AS 'Descricao'
 from OrderDetails
 limit 15;
+
+atividade 4
+SELECT 
+    CONCAT(FirstName, ' ', LastName, ' - Funcionario Senai') AS 'NomeCompleto/funcionario'
+FROM Employees
+LIMIT 3;
+
+atvidade 5
+SELECT 
+ProductName AS Produto,
+Price AS Preco,
+Price * 0.85 AS Desconto
+FROM Products
+ORDER BY Price DESC
+LIMIT 8;
+
+atividade 6
+SELECT 
+CONCAT(CustomerName, ' : ', City) AS 'Cidade Do Cliente'
+FROM Customers
+ORDER BY CustomerName ASC
+LIMIT 12;
+
+atividade7
+SELECT OrderDetailID AS ID ,
+CONCAT('Quantidade: ', Quantity, ' | Diferenca: ', 100 - Quantity) AS Resultado
+FROM OrderDetails
+LIMIT 20;
+
+atividade8
+SELECT 
+    CONCAT(CategoryName, ' : ', Description) AS 'Produtos E Descricao'
+FROM Categories
+LIMIT 5;
+
+atividade9
