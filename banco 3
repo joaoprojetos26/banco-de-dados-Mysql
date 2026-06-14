@@ -49,3 +49,63 @@ FROM Categories
 LIMIT 5;
 
 atividade9
+SELECT 
+CONCAT(ProductName ,' ','preco :R$', Price * 50) AS  Custo_50_Unidades
+FROM Products
+LIMIT 10;
+
+atividade10
+SELECT 
+CONCAT(Address, ', ', City, ' : ', PostalCode) AS 'endereco Completo'
+FROM Customers
+LIMIT 25;
+
+atividade11
+SELECT City AS Cidade,
+COUNT(*) AS TotalClientes
+FROM Customers
+GROUP BY Cidade
+ORDER BY TotalClientes DESC
+LIMIT 5;
+
+atividade12
+SELECT 
+    CategoryID AS ID,
+    COUNT(*) AS TodosProdutos
+FROM Products
+GROUP BY ID
+LIMIT 3;
+
+atividade13
+SELECT 
+    EmployeeID AS 'ID Funcionario',
+    COUNT(*) AS TotalEncomendas
+FROM Orders
+GROUP BY EmployeeID
+ORDER BY TotalEncomendas DESC
+
+atividade14
+SELECT 
+    Country AS Pais,
+    COUNT(*) AS TotalFornecedores
+FROM Suppliers
+GROUP BY Country
+LIMIT 10;
+
+atividade15
+SELECT 
+OrderID AS ID,
+COUNT(DISTINCT ProductID) AS ProdutosDiferentes
+FROM OrderDetails
+GROUP BY OrderID
+LIMIT 15;
+
+atividade16
+SELECT 
+City AS Cidade,
+COUNT(*) AS TotalDetransportadoras
+FROM  Customers
+GROUP BY City 
+LIMIT 2;
+
+atividade17
