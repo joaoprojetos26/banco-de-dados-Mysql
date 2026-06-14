@@ -338,3 +338,30 @@ FROM Suppliers
 LIMIT 10;
 
 atividade48
+SELECT EmployeeID AS funcionario,
+COUNT(*) AS TotalEncomendas
+FROM Orders
+GROUP BY EmployeeID
+HAVING COUNT(*) * 2 > 50;
+
+atividade49
+CREATE TABLE ResumoTransportes AS
+SELECT 
+ShipperID,
+COUNT(*) AS TotalEncomendas
+FROM Orders
+GROUP BY ShipperID
+ORDER BY TotalEncomendas DESC
+LIMIT 2;
+
+atividade50
+CREATE TABLE RelatorioFinal AS
+SELECT 
+CONCAT(e.FirstName, ' ', e.LastName) AS NomeCompleto,
+COUNT(o.OrderID) AS TotalEncomendas
+FROM Employees e
+JOIN Orders o ON e.EmployeeID = o.EmployeeID
+GROUP BY e.EmployeeID, e.FirstName, e.LastName
+HAVING COUNT(o.OrderID) > 5
+ORDER BY TotalEncomendas DESC
+LIMIT 3;
