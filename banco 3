@@ -109,3 +109,31 @@ GROUP BY City
 LIMIT 2;
 
 atividade17
+SELECT 
+SupplierID AS IDFornecedor,
+COUNT(*) AS TotalProdutos
+FROM Products
+GROUP BY SupplierID
+LIMIT 5;
+
+atividade18
+SELECT 
+ OrderDate AS 'Data',
+ COUNT(*) AS TotalEncomendas
+FROM Orders
+GROUP BY OrderDate
+ORDER BY TotalEncomendas DESC
+LIMIT 10;
+
+atividade19
+SELECT 
+PostalCode AS 'Cod/Postal',
+COUNT(*) AS Clientes
+FROM Customers
+GROUP BY PostalCode
+LIMIT 8;
+
+atividade20
+SELECT CategoryID AS Categoria, COUNT(*) AS Total
+FROM Products
+GROUP BY CategoryID;
