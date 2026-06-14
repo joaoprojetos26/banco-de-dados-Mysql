@@ -44,7 +44,7 @@ LIMIT 20;
 
 atividade8
 SELECT 
-    CONCAT(CategoryName, ' : ', Description) AS 'Produtos E Descricao'
+CONCAT(CategoryName, ' : ', Description) AS 'Produtos E Descricao'
 FROM Categories
 LIMIT 5;
 
@@ -70,24 +70,24 @@ LIMIT 5;
 
 atividade12
 SELECT 
-    CategoryID AS ID,
-    COUNT(*) AS TodosProdutos
+CategoryID AS ID,
+COUNT(*) AS TodosProdutos
 FROM Products
 GROUP BY ID
 LIMIT 3;
 
 atividade13
 SELECT 
-    EmployeeID AS 'ID Funcionario',
-    COUNT(*) AS TotalEncomendas
+EmployeeID AS 'ID Funcionario',
+COUNT(*) AS TotalEncomendas
 FROM Orders
 GROUP BY EmployeeID
 ORDER BY TotalEncomendas DESC
 
 atividade14
 SELECT 
-    Country AS Pais,
-    COUNT(*) AS TotalFornecedores
+Country AS Pais,
+COUNT(*) AS TotalFornecedores
 FROM Suppliers
 GROUP BY Country
 LIMIT 10;
@@ -118,8 +118,8 @@ LIMIT 5;
 
 atividade18
 SELECT 
- OrderDate AS 'Data',
- COUNT(*) AS TotalEncomendas
+OrderDate AS 'Data',
+COUNT(*) AS TotalEncomendas
 FROM Orders
 GROUP BY OrderDate
 ORDER BY TotalEncomendas DESC
@@ -137,3 +137,204 @@ atividade20
 SELECT CategoryID AS Categoria, COUNT(*) AS Total
 FROM Products
 GROUP BY CategoryID;
+
+atividade21
+SELECT 
+Country AS Pais,
+COUNT(*) AS TotalClientes
+FROM Customers
+GROUP BY Country
+HAVING COUNT(*) > 5;
+
+aTIVIDADE22
+SELECT 
+EmployeeID AS Funcionario,
+COUNT(*) AS TotalEncomendas
+FROM Orders
+GROUP BY EmployeeID
+HAVING COUNT(*) > 10;
+
+atividade23
+SELECT 
+CategoryID AS Categoria,
+COUNT(*) AS TotalProdutos
+FROM Products
+GROUP BY CategoryID
+HAVING COUNT(*) > 12;
+
+atividade24
+SELECT 
+City AS Cidade,
+COUNT(*) AS Fornecedores
+FROM Suppliers
+GROUP BY City
+HAVING COUNT(*) LIKE 2;
+
+atividade25
+SELECT 
+OrderID AS ID,
+COUNT(DISTINCT ProductID) AS TotalProdutosDistintos
+FROM OrderDetails
+GROUP BY OrderID
+HAVING COUNT(DISTINCT ProductID) > 3;
+
+atividad26
+SELECT 
+City AS Cidade,
+COUNT(*) AS TotalClientes
+FROM Customers
+GROUP BY City
+HAVING COUNT(*) > 3
+
+atividade27
+SELECT 
+SupplierID AS Fornecedor,
+COUNT(*) AS TotalProdutos
+FROM Products
+GROUP BY SupplierID
+HAVING COUNT(*) < 5;
+
+atividade28
+SELECT 
+CategoryID AS Categoria,
+COUNT(*) AS TotalProdutos
+FROM Products
+GROUP BY CategoryID
+HAVING COUNT(*) IN (
+SELECT COUNT(*)
+FROM Products
+GROUP BY CategoryID
+HAVING COUNT(*) > 1
+);
+
+atividade29
+SELECT 
+YEAR(BirthDate) AS AnoNascimento,
+COUNT(*) AS Funcionarios
+FROM Employees
+GROUP BY YEAR(BirthDate)
+HAVING COUNT(*) > 1;
+
+atividade30
+SELECT 
+    s.Country AS Pais,
+    COUNT(*) AS TotalTransportadoras
+FROM Shippers sh
+JOIN Suppliers s ON sh.ShipperID = s.SupplierID
+GROUP BY s.Country
+HAVING COUNT(*) > 1;
+
+atividade31
+CREATE TABLE TopClientes_Senai AS
+SELECT CustomerName
+FROM Customers
+LIMIT 10;
+/*CREATE TABLE NAO FUNCIONA NO W3SCOOLS 
+que o certo a se usar no mysql,SELECT INTO → funciona no SQL Server*/
+
+atividade32
+SELECT ProductName
+INTO ProdutosCaros
+FROM Products
+WHERE Price > 50;
+
+atividade33
+SELECT CategoryName
+INTO BackupCategorias
+FROM Categories;
+
+atividade34
+SELECT LastName, FirstName
+INTO EquipaVendas
+FROM Employees;
+
+atividade35
+SELECT *
+INTO EncomendasRecentes
+FROM Orders
+ORDER BY OrderDate DESC
+LIMIT 20;
+
+atividade36
+SELECT SupplierName ,City 
+INTO FornecedoresNacionais
+FROM Suppliers
+WHERE City LIKE 'London';
+
+atividade37
+SELECT ShipperName, Phone
+INTO ContactosTransporte
+FROM Shippers;
+
+atividade38
+SELECT Quantity
+INTO DetalhesGrandes
+FROM OrderDetails
+WHERE Quantity > 50;
+
+atividade39
+SELECT CustomerName, ContactName
+INTO MailingList
+FROM Customers;
+
+atividade40
+SELECT ProductName,Price
+INTO ProdutosInativos
+FROM Products
+WHERE Price = 0 OR Price IS NULL;
+
+atividade41
+SELECT 
+CONCAT('Categoria N* ', CategoryID) AS Categoria,
+COUNT(*) AS TotalProdutos
+FROM Products
+GROUP BY CategoryID
+HAVING COUNT(*) > 5
+LIMIT 3;
+
+atividade42
+SELECT 
+OrderID,
+SUM(Quantity) AS TotalItens
+INTO ResumoEncomendas
+FROM OrderDetails
+GROUP BY OrderID;
+
+atividade43
+SELECT CONCAT(FirstName, ' ', LastName) AS NomeCompleto
+INTO VeteranosSenai
+FROM Employees
+ORDER BY BirthDate ASC
+LIMIT 5;
+
+atividade44
+SELECT 
+City,   
+COUNT(*) AS TotalClientes
+INTO CidadesEstrategicas
+FROM Customers
+GROUP BY City
+HAVING COUNT(*) > 2
+LIMIT 5;
+
+atividade45
+SELECT 
+CONCAT('Produto: ', ProductName, ' IVA: ', UnitPrice * 0.23) AS Resultado
+FROM Products
+LIMIT 15;
+
+atividade46
+SELECT 
+ProductID AS IDProduto,
+AVG(Quantity) AS MediaQuantidade
+FROM OrderDetails
+GROUP BY ProductID
+HAVING AVG(Quantity) > 20;
+
+atividade47
+SELECT CONCAT(SupplierName, ' - ', ContactName) AS Contacto
+INTO ContactosFornecedores
+FROM Suppliers
+LIMIT 10;
+
+atividade48
